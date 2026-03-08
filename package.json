@@ -1,0 +1,41 @@
+{
+  "name": "multi-school-management-frontend",
+  "version": "1.0.0",
+  "description": "Multi-School Management System SaaS Platform - Frontend",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next": "^13.4.0",
+    "axios": "^1.4.0",
+    "zustand": "^4.3.8",
+    "react-hook-form": "^7.45.0",
+    "tailwindcss": "^3.3.0",
+    "recharts": "^2.7.0",
+    "react-hot-toast": "^2.4.0",
+    "framer-motion": "^10.12.0",
+    "date-fns": "^2.30.0",
+    "next-auth": "^4.22.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6",
+    "@types/react": "^18.2.14",
+    "@types/node": "^20.3.1",
+    "@types/lodash": "^4.14.195",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "eslint": "^8.44.0",
+    "eslint-config-next": "^13.4.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
