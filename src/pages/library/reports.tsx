@@ -1,18 +1,18 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { api } from '@/lib/api';
+import api from '@/lib/api';
 
 export default function ReportsPage() {
   const [reportType, setReportType] = useState('dashboard');
-  const [reportData, setReportData] = useState(null);
+  const [reportData, setReportData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchReport(reportType);
   }, [reportType]);
 
-  const fetchReport = async (type) => {
+  const fetchReport = async (type: string) => {
     try {
       setLoading(true);
       let endpoint = '';
@@ -57,7 +57,7 @@ export default function ReportsPage() {
               <div key={key} className="bg-blue-50 rounded-lg p-6 shadow">
                 <p className="text-gray-600 text-sm capitalize">{key.replace(/([A-Z])/g, ' $1')}</p>
                 <p className="text-blue-600 text-3xl font-bold mt-2">
-                  {typeof value === 'number' && value.toFixed ? value.toFixed(2) : value}
+                  {typeof value === 'number' ? (value as any).toFixed(2) : (value as any)}
                 </p>
               </div>
             ))}
@@ -86,7 +86,7 @@ export default function ReportsPage() {
                       <td className="px-6 py-4">
                         <span className="text-red-600 font-semibold">
                           {Math.ceil(
-                            (new Date() - new Date(item.dueDate)) / (1000 * 60 * 60 * 24)
+                            (new Date().getTime() - new Date(item.dueDate).getTime()) / (1000 * 60 * 60 * 24)
                           )}
                         </span>
                       </td>

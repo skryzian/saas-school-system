@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
-import { api } from '@/lib/api';
+import api from '@/lib/api';
 
 export default function LibraryDashboard() {
-  const [stats, setStats] = useState(null);
+  const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchDashboardStats();
@@ -18,7 +18,7 @@ export default function LibraryDashboard() {
       setLoading(true);
       const response = await api.get('/library/reports/dashboard/stats');
       setStats(response.data.data);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);

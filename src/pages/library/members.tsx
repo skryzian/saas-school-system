@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { api } from '@/lib/api';
+import api from '@/lib/api';
 
 export default function MembersPage() {
-  const [members, setMembers] = useState([]);
+  const [members, setMembers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [pagination, setPagination] = useState(null);
+  const [pagination, setPagination] = useState<any>(null);
   const [memberType, setMemberType] = useState('');
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function MembersPage() {
     }
   };
 
-  const handleDeactivate = async (memberId) => {
+  const handleDeactivate = async (memberId: string) => {
     if (window.confirm('Are you sure you want to deactivate this member?')) {
       try {
         await api.put(`/library/members/${memberId}/deactivate`);
