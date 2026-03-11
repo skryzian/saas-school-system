@@ -74,7 +74,7 @@ export default function StudentsPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm">
-                      <button className="text-primary-600 hover:text-primary-900 font-medium">View</button>
+                      <button className="text-primary-600 hover:text-primary-700 font-medium">View</button>
                       <button className="ml-4 text-orange-600 hover:text-orange-900 font-medium">Edit</button>
                     </td>
                   </tr>

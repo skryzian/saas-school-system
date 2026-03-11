@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
-import api from '@/lib/api';
+import { api } from '@/lib/api';
 
 export default function LibraryDashboard() {
-  const [stats, setStats] = useState<any>(null);
+  const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchDashboardStats();
@@ -18,7 +18,7 @@ export default function LibraryDashboard() {
       setLoading(true);
       const response = await api.get('/library/reports/dashboard/stats');
       setStats(response.data.data);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -98,16 +98,16 @@ export default function LibraryDashboard() {
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-bold text-gray-800 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="/library/books" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded text-center">
+          <a href="/library/books" className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded text-center">
             Browse Books
           </a>
-          <a href="/library/members" className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded text-center">
+          <a href="/library/members" className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded text-center">
             Manage Members
           </a>
-          <a href="/library/issues" className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded text-center">
+          <a href="/library/issues" className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded text-center">
             Issue/Return
           </a>
-          <a href="/library/reports" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded text-center">
+          <a href="/library/reports" className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded text-center">
             View Reports
           </a>
         </div>

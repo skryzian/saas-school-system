@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import api from '@/lib/api';
+import { api } from '@/lib/api';
 
 export default function BooksPage() {
-  const [books, setBooks] = useState<any[]>([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const [pagination, setPagination] = useState<any>(null);
+  const [pagination, setPagination] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
@@ -42,7 +42,7 @@ export default function BooksPage() {
     }
   };
 
-  const handleAddBook = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddBook = async (e) => {
     e.preventDefault();
     try {
       await api.post('/library/books', formData);
@@ -67,7 +67,7 @@ export default function BooksPage() {
         <h1 className="text-3xl font-bold text-gray-800">Library Books</h1>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+          className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded"
         >
           + Add Book
         </button>
@@ -83,7 +83,7 @@ export default function BooksPage() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
         />
       </div>
 
@@ -124,7 +124,7 @@ export default function BooksPage() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm">
-                    <a href={`/library/books/${book.id}`} className="text-blue-500 hover:underline">
+                    <a href={`/library/books/${book.id}`} className="text-primary-600 hover:underline">
                       View
                     </a>
                   </td>
@@ -144,7 +144,7 @@ export default function BooksPage() {
               onClick={() => setPage(p)}
               className={`px-3 py-2 rounded ${
                 p === page
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-primary-600 text-white'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >
@@ -166,14 +166,14 @@ export default function BooksPage() {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <input
                 type="text"
                 placeholder="ISBN"
                 value={formData.isbn}
                 onChange={(e) => setFormData({ ...formData, isbn: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <input
                 type="number"
@@ -181,7 +181,7 @@ export default function BooksPage() {
                 required
                 value={formData.authorId}
                 onChange={(e) => setFormData({ ...formData, authorId: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <input
                 type="number"
@@ -190,12 +190,12 @@ export default function BooksPage() {
                 required
                 value={formData.totalCopies}
                 onChange={(e) => setFormData({ ...formData, totalCopies: parseInt(e.target.value) })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <div className="flex gap-2 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                  className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded"
                 >
                   Add Book
                 </button>

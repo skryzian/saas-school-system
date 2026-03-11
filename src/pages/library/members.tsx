@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import api from '@/lib/api';
+import { api } from '@/lib/api';
 
 export default function MembersPage() {
-  const [members, setMembers] = useState<any[]>([]);
+  const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [pagination, setPagination] = useState<any>(null);
+  const [pagination, setPagination] = useState(null);
   const [memberType, setMemberType] = useState('');
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function MembersPage() {
     }
   };
 
-  const handleDeactivate = async (memberId: string) => {
+  const handleDeactivate = async (memberId) => {
     if (window.confirm('Are you sure you want to deactivate this member?')) {
       try {
         await api.put(`/library/members/${memberId}/deactivate`);
@@ -56,7 +56,7 @@ export default function MembersPage() {
             setMemberType(e.target.value);
             setPage(1);
           }}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
           <option value="">All Member Types</option>
           <option value="student">Student</option>
@@ -109,7 +109,7 @@ export default function MembersPage() {
                     )}
                   </td>
                   <td className="px-6 py-4 text-sm space-x-2">
-                    <a href={`/library/members/${member.id}`} className="text-blue-500 hover:underline">
+                    <a href={`/library/members/${member.id}`} className="text-primary-600 hover:underline">
                       View
                     </a>
                     <button
@@ -135,7 +135,7 @@ export default function MembersPage() {
               onClick={() => setPage(p)}
               className={`px-3 py-2 rounded ${
                 p === page
-                  ? 'bg-blue-500 text-white'
+                  ? 'bg-primary-600 text-white'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >
